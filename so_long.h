@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/08 13:38:00 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/08 15:06:42 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 # include <stdlib.h>
 # include <limits.h>
 
-
+void	read_the_map(char *map);
 
 #endif

@@ -6,13 +6,13 @@
 #    By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/05 11:27:08 by paprzyby          #+#    #+#              #
-#    Updated: 2024/07/08 14:35:48 by paprzyby         ###   ########.fr        #
+#    Updated: 2024/07/08 14:56:45 by paprzyby         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	so_long
 
-SOURCE			=	mlx_init.c
+SOURCE			=	main.c
 LIBMLX_DIR		=	./MLX42
 LIBFT_DIR		=	libft
 FT_PRINTF_DIR	=	./$(LIBFT_DIR)/ft_printf
