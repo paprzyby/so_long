@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/08 15:06:43 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/09 09:47:12 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,20 @@ void	read_the_map(char *map)
 		ft_printf("\nError while opening the map\n\n");
 		return ;
 	}
-	while (line != NULL)
+	line = get_next_line(fd);
+	while (line)
 	{
+		ft_printf("%s", line);
 		line = get_next_line(fd);
-		ft_printf("\n%s\n\n", line);
 	}
 	close(fd);
 }
 
 int	main(int ac, char **av)
 {
-	void	*mlx;
-	void	*mlx_win;
-
 	if (ac == 2)
 	{
 		read_the_map(av[1]);
-		mlx = mlx_init(1920, 1080, "Hello world!", true);
-		mlx_loop(mlx);
 		return (0);
 	}
 	ft_printf("\nError:\nInvalid number of parameters\n\n");
