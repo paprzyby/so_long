@@ -6,57 +6,59 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/09 15:23:59 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/10 15:47:29 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	read_the_map(char *map)
+char	*read_the_map(char *map)
 {
+	char	*lines;
 	char	*line;
-	char	*first_line;
 	int		fd;
-	int		width;
 
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_printf("Error: Problem when opening the map\n");
-		return ;
-	}
-	first_line = get_next_line(fd);
+		return (NULL);
 	line = get_next_line(fd);
-	if (!line && !first_line)
-	{
-		ft_printf("Error: Invalid map\n");
-		close(fd);
-		return ;
-	}
-	width = ft_strlen(first_line);
+	lines = ft_calloc(1 , 1);
 	while (line)
 	{
-		ft_printf("%s\n", line);
-		ft_printf("%d\n", width);
-		if (width != ft_strlen(line))
-		{
-			ft_printf("Error: Invalid map\n");
-			close(fd);
-			return ;
-		}
+		lines = ft_strjoin(lines, line);
+		free(line);
 		line = get_next_line(fd);
 	}
-	ft_printf("The map is valid\n");
+	free(line);
 	close(fd);
+	return (lines);
+}
+
+bool	check_the_map(char *map)
+{
+	char	*lines;
+
+	lines = read_the_map(map);
+	ft_printf("%s\n", lines);
+	return (true);
 }
 
 int	main(int ac, char **av)
 {
 	if (ac == 2)
 	{
-		read_the_map(av[1]);
+		if (check_the_map(av[1]) == false)
+			ft_printf("Error: Invalid map\n");
+		else
+			ft_printf("Valid map\n");
 		return (0);
 	}
 	ft_printf("Error: Invalid number of parameters\n");
 	return (1);
 }
+
+//things to check in the map:
+//size
+//charachters
+//number of exits itp.
+//walls around the map

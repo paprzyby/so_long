@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/09 14:48:38 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/10 15:34:15 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdbool.h>
 
-void	read_the_map(char *map);
+bool	check_the_map(char *map);
+char	*read_the_map(char *map);
 
 #endif
