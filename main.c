@@ -6,11 +6,16 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/11 15:25:48 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/11 15:30:28 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	count_map_size(char *line, t_lst *game)
+{
+
+}
 
 char	*read_the_map(char *map)
 {
