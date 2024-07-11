@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/11 16:37:54 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/11 16:46:46 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ int	main(int ac, char **av)
 		game = calloc(1, sizeof(t_lst));
 		if (read_the_map(av[1], game) == false)
 			ft_printf("Error: Invalid map\n");
-		else
-			ft_printf("Valid map\n");
+		if (check_the_map(game))
+			ft_printf("Error: Invalid map\n");
+		ft_printf("Valid map\n");
 		return (0);
 	}
 	ft_printf("Error: Invalid number of parameters\n");
