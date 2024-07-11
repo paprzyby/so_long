@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/11 15:14:13 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/11 15:25:48 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,25 @@ char	*read_the_map(char *map)
 	return (lines);
 }
 
-bool	check_the_map(char *map)
+bool	check_the_map(char *map, t_lst *game)
 {
 	char	*lines;
 
 	lines = read_the_map(map);
-	ft_printf("%s\n", lines);
+	game->map = lines;
+	free(lines);
+	ft_printf("%s\n", game->map);
 	return (true);
 }
 
 int	main(int ac, char **av)
 {
+	t_lst	*game;
+
 	if (ac == 2)
 	{
-		if (check_the_map(av[1]) == false)
+		game = calloc(1, sizeof(t_lst));
+		if (check_the_map(av[1], game) == false)
 			ft_printf("Error: Invalid map\n");
 		else
 			ft_printf("Valid map\n");

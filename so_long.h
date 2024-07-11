@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/11 15:14:14 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/11 15:17:33 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@
 # include <limits.h>
 # include <stdbool.h>
 
-typedef struct	s_game
+typedef struct	s_lst
 {
 	char	*map;
-}				t_game;
+}				t_lst;
 
-bool	check_the_map(char *map);
+bool	check_the_map(char *map, t_lst *game);
 char	*read_the_map(char *map);
 
 #endif
