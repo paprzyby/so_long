@@ -6,18 +6,25 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/11 15:30:28 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/11 16:04:51 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	count_map_size(char *line, t_lst *game)
+bool	count_map_size(char *line, t_lst *game)
 {
+	int	len;
 
+	len = ft_strlen(line);
+	if (len == 0 || line[0] == '\n')
+		return (false);
+	game->width = len;
+	game->height++;
+	return (true);
 }
 
-char	*read_the_map(char *map)
+char	*read_the_map(char *map, t_lst *game)
 {
 	char	*lines;
 	char	*line;
@@ -31,6 +38,8 @@ char	*read_the_map(char *map)
 	while (line)
 	{
 		lines = ft_strjoin(lines, line);
+		if (count_map_size(line, game) == false)
+			return (NULL);
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -43,10 +52,14 @@ bool	check_the_map(char *map, t_lst *game)
 {
 	char	*lines;
 
-	lines = read_the_map(map);
+	lines = read_the_map(map, game);
+	if (!lines)
+		return (false);
 	game->map = lines;
 	free(lines);
 	ft_printf("%s\n", game->map);
+	ft_printf("%d\n", game->width);
+	ft_printf("%d\n", game->height);
 	return (true);
 }
 
