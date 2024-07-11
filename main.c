@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/11 16:46:46 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/11 17:48:57 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ bool	read_the_map(char *map, t_lst *game)
 	close(fd);
 	game->map = ft_split(lines, '\n');
 	game->map_copy = ft_split(lines, '\n');
-	ft_printf("%s\n", lines);
+	//ft_printf("%s\n", lines);
 	free(line);
 	free(lines);
 	return (true);
@@ -67,9 +67,10 @@ int	main(int ac, char **av)
 		game = calloc(1, sizeof(t_lst));
 		if (read_the_map(av[1], game) == false)
 			ft_printf("Error: Invalid map\n");
-		if (check_the_map(game))
+		if (check_the_map(game->map) == false)
 			ft_printf("Error: Invalid map\n");
-		ft_printf("Valid map\n");
+		else
+			ft_printf("Valid map\n");
 		return (0);
 	}
 	ft_printf("Error: Invalid number of parameters\n");
