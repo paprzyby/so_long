@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/11 16:04:51 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/11 16:37:54 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	count_map_size(char *line, t_lst *game)
 	return (true);
 }
 
-char	*read_the_map(char *map, t_lst *game)
+bool	read_the_map(char *map, t_lst *game)
 {
 	char	*lines;
 	char	*line;
@@ -32,34 +32,29 @@ char	*read_the_map(char *map, t_lst *game)
 
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
-		return (NULL);
+		return (false);
 	line = get_next_line(fd);
+	if (!line || line[0] == '\n')
+	{
+		free(line);
+		close(fd);
+		return (false);
+	}
 	lines = ft_calloc(1 , 1);
 	while (line)
 	{
 		lines = ft_strjoin(lines, line);
 		if (count_map_size(line, game) == false)
-			return (NULL);
+			return (false);
 		free(line);
 		line = get_next_line(fd);
 	}
-	free(line);
 	close(fd);
-	return (lines);
-}
-
-bool	check_the_map(char *map, t_lst *game)
-{
-	char	*lines;
-
-	lines = read_the_map(map, game);
-	if (!lines)
-		return (false);
-	game->map = lines;
+	game->map = ft_split(lines, '\n');
+	game->map_copy = ft_split(lines, '\n');
+	ft_printf("%s\n", lines);
+	free(line);
 	free(lines);
-	ft_printf("%s\n", game->map);
-	ft_printf("%d\n", game->width);
-	ft_printf("%d\n", game->height);
 	return (true);
 }
 
@@ -70,7 +65,7 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		game = calloc(1, sizeof(t_lst));
-		if (check_the_map(av[1], game) == false)
+		if (read_the_map(av[1], game) == false)
 			ft_printf("Error: Invalid map\n");
 		else
 			ft_printf("Valid map\n");
