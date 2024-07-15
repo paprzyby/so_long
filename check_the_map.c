@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 16:46:36 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/15 09:07:52 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/15 11:57:43 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,12 @@ bool	check_the_size(t_lst *game)
 	return (true);
 }
 
-bool	check_the_map(t_lst *game)
+void	check_the_map(t_lst *game)
 {
 	if (check_the_size(game) == false)
-		return (false);
+		ft_error(game);
 	if (check_the_chars(game) == false)
-		return (false);
+		ft_error(game);
 	if (check_the_walls(game) == false)
-		return (false);
-	return (true);
+		ft_error(game);
 }

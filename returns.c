@@ -1,35 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   returns.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
+/*   Created: 2024/07/15 11:55:03 by paprzyby          #+#    #+#             */
 /*   Updated: 2024/07/15 12:12:58 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int ac, char **av)
+void	ft_return(int fd, char *line, char *lines, bool check)
 {
-	t_lst	*game;
-	mlx_t	*mlx;
-
-
-	if (ac == 2)
+	if (fd == -1)
 	{
-		game = ft_calloc(1, sizeof(t_lst));
-		read_the_map(av[1], game);
-		check_the_map(game);
-		flood_init(game);
-		ft_printf("Valid map\n");
-		//mlx = mlx_init((game->row - 1) * 50, game->column * 50, "so_long", true);
-		//mlx_loop(mlx);
-		//clear the list
-		return (0);
+		ft_printf("Error\nFailed, while opening the file\n");
+		exit(1);
 	}
-	ft_printf("Error\nInvalid number of parameters\n");
-	return (1);
+	if (check == true)
+	{
+		free(line);
+		free(lines);
+		close(fd);
+		return ;
+	}
+	if (lines)
+		free(line);
+	free(line);
+	close(fd);
+	ft_printf("Error\nInvalid map\n");
+	exit(1);
+}
+
+void	ft_error(t_lst *game)
+{
+	ft_printf("Error\nInvalid map\n");
+	free(game);
+	//clear the list
+	exit(1);
+}
+
+void	ft_flood_error(t_flood *flood, t_lst *game)
+{
+	ft_printf("Error\nInvalid map\n");
+	free(game);
+	free(flood);
+	//clear the list
+	exit(1);
 }
