@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/15 10:50:43 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/15 11:30:21 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_lst
 	char	**map_copy;
 	int		column;
 	int		row;
+	mlx_t	*mlx;
 }				t_lst;
 
 typedef struct	s_flood
@@ -44,7 +45,7 @@ bool	check_the_map(t_lst *game);
 bool	check_the_size(t_lst *game);
 bool	check_the_chars(t_lst *game);
 bool	check_the_walls(t_lst *game);
-bool	ft_flood_fill(char **map, t_lst *game);
+bool	flood_init(t_lst *game);
 void	flood_fill(char **map, t_lst *game, int x, int y, t_flood *flood);
 
 #endif

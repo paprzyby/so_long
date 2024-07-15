@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/15 10:41:29 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/15 11:28:33 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,24 @@ bool	read_the_map(char *map, t_lst *game)
 int	main(int ac, char **av)
 {
 	t_lst	*game;
+	mlx_t	*mlx;;
+
 
 	if (ac == 2)
 	{
-		game = calloc(1, sizeof(t_lst));
+		game = ft_calloc(1, sizeof(t_lst));
 		if (read_the_map(av[1], game) == false)
 			ft_printf("Error: Invalid map\n");
 		if (check_the_map(game) == false)
 			ft_printf("Error: Invalid map\n");
-		if (ft_flood_fill(game->map_copy, game) == false)
-			ft_printf("Error: Flood fill error\n");
+		if (ft_flood_fill(game) == false)
+			ft_printf("Error: Invalid map\n");
 		else
+		{
 			ft_printf("Valid map\n");
+			mlx = mlx_init((game->row - 1) * 50, game->column * 50, "so_long", true);
+			mlx_loop(mlx);
+		}
 		return (0);
 	}
 	ft_printf("Error: Invalid number of parameters\n");
