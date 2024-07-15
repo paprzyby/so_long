@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/15 13:35:10 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/15 13:40:33 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define SO_LONG_H
 
 # include "./MLX42/include/MLX42/MLX42.h"
-# include "./libraries/libft.h"
-# include "./libraries/ft_printf/ft_printf.h"
-# include "./libraries/get_next_line/get_next_line.h"
+# include "./libft/libft.h"
+# include "./ft_printf/ft_printf.h"
+# include "./get_next_line/get_next_line.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
