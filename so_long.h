@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/11 17:54:07 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/15 08:11:43 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ typedef struct	s_lst
 {
 	char	**map;
 	char	**map_copy;
-	int		width;
-	int		height;
+	int		column;
+	int		row;
 }				t_lst;
 
 bool	read_the_map(char *map, t_lst *game);
 bool	count_map_size(char *line, t_lst *game);
-bool	check_the_map(char **map);
-bool	check_the_size(char **map);
-bool	check_the_chars(char **map);
+bool	check_the_map(t_lst *game);
+bool	check_the_size(t_lst *game);
+bool	check_the_chars(t_lst *game);
 
 #endif

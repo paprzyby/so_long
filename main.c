@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/11 17:48:57 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/15 08:13:19 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ bool	count_map_size(char *line, t_lst *game)
 	len = ft_strlen(line);
 	if (len == 0 || line[0] == '\n')
 		return (false);
-	game->width = len;
-	game->height++;
+	game->column = len;
+	game->row++;
 	return (true);
 }
 
@@ -67,7 +67,7 @@ int	main(int ac, char **av)
 		game = calloc(1, sizeof(t_lst));
 		if (read_the_map(av[1], game) == false)
 			ft_printf("Error: Invalid map\n");
-		if (check_the_map(game->map) == false)
+		if (check_the_map(game) == false)
 			ft_printf("Error: Invalid map\n");
 		else
 			ft_printf("Valid map\n");
