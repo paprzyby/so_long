@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/15 09:46:58 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/15 10:50:43 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ typedef struct	s_lst
 	int		row;
 }				t_lst;
 
-typedef struct	s_pos
+typedef struct	s_flood
 {
-	int	x;
-	int	y;
-}				t_pos;
+	int	c;
+	int	p;
+	int e;
+}				t_flood;
 
 bool	read_the_map(char *map, t_lst *game);
 bool	free_and_close(int fd, char *line, char *lines, bool check);
@@ -43,6 +44,7 @@ bool	check_the_map(t_lst *game);
 bool	check_the_size(t_lst *game);
 bool	check_the_chars(t_lst *game);
 bool	check_the_walls(t_lst *game);
-bool	flood_fill(t_lst *game, t_pos *position);
+bool	ft_flood_fill(char **map, t_lst *game);
+void	flood_fill(char **map, t_lst *game, int x, int y, t_flood *flood);
 
 #endif

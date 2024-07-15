@@ -6,16 +6,11 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/15 09:46:47 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/15 10:41:29 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-bool	flood_fill(t_lst *game, t_pos *position)
-{
-	return (true);
-}
 
 bool	count_map_size(char *line, t_lst *game)
 {
@@ -74,13 +69,12 @@ bool	read_the_map(char *map, t_lst *game)
 	}
 	game->map = ft_split(lines, '\n');
 	game->map_copy = ft_split(lines, '\n');
-	return (!free_and_close(fd, line, lines, true));
+	return (free_and_close(fd, line, lines, true));
 }
 
 int	main(int ac, char **av)
 {
 	t_lst	*game;
-	t_pos	*position;
 
 	if (ac == 2)
 	{
@@ -89,7 +83,7 @@ int	main(int ac, char **av)
 			ft_printf("Error: Invalid map\n");
 		if (check_the_map(game) == false)
 			ft_printf("Error: Invalid map\n");
-		if (flood_fill(game, position) == false)
+		if (ft_flood_fill(game->map_copy, game) == false)
 			ft_printf("Error: Flood fill error\n");
 		else
 			ft_printf("Valid map\n");
