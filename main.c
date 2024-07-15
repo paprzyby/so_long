@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/15 08:32:42 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/15 09:29:27 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ bool	count_map_size(char *line, t_lst *game)
 	return (true);
 }
 
+bool	free_and_close(int fd, char *line, char *lines)
+{
+	free(line);
+	if (lines)
+		free(lines);
+	close(fd);
+	return (false);
+}
+
 bool	read_the_map(char *map, t_lst *game)
 {
 	char	*lines;
@@ -35,24 +44,19 @@ bool	read_the_map(char *map, t_lst *game)
 		return (false);
 	line = get_next_line(fd);
 	if (!line || line[0] == '\n')
-	{
-		free(line);
-		close(fd);
-		return (false);
-	}
+		return (free_and_close(fd, line, lines));
 	lines = ft_calloc(1 , 1);
 	while (line)
 	{
 		lines = ft_strjoin(lines, line);
 		if (count_map_size(line, game) == false)
-			return (false);
+			return (free_and_close(fd, line, lines));
 		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
 	game->map = ft_split(lines, '\n');
 	game->map_copy = ft_split(lines, '\n');
-	//ft_printf("%s\n", lines);
 	free(line);
 	free(lines);
 	return (true);

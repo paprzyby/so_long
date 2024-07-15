@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/15 08:37:26 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/15 09:31:44 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct	s_lst
 }				t_lst;
 
 bool	read_the_map(char *map, t_lst *game);
+bool	free_and_close(int fd, char *line, char *lines);
 bool	count_map_size(char *line, t_lst *game);
 bool	check_the_map(t_lst *game);
 bool	check_the_size(t_lst *game);
