@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/15 08:13:19 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/15 08:32:42 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,3 @@ int	main(int ac, char **av)
 	ft_printf("Error: Invalid number of parameters\n");
 	return (1);
 }
-
-//things to check in the map:
-//size
-//charachters
-//number of exits itp.
-//walls around the map

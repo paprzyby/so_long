@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/15 08:11:43 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/15 08:37:26 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ bool	count_map_size(char *line, t_lst *game);
 bool	check_the_map(t_lst *game);
 bool	check_the_size(t_lst *game);
 bool	check_the_chars(t_lst *game);
+bool	check_the_walls(t_lst *game);
 
 #endif
