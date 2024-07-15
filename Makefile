@@ -6,7 +6,7 @@
 #    By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/05 11:27:08 by paprzyby          #+#    #+#              #
-#    Updated: 2024/07/15 11:59:54 by paprzyby         ###   ########.fr        #
+#    Updated: 2024/07/15 13:52:53 by paprzyby         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,12 @@ SOURCE			=	main.c check_the_map.c flood_fill.c \
 					read_the_map.c returns.c
 LIBMLX_DIR		=	./MLX42
 LIBFT_DIR		=	libft
-FT_PRINTF_DIR	=	./$(LIBFT_DIR)/ft_printf
-GNL_DIR			=	./$(LIBFT_DIR)/get_next_line
+FT_PRINTF_DIR	=	ft_printf
+GNL_DIR			=	get_next_line
 
 OBJECTS			=	$(SOURCE:.c=.o)
 LIBFT			=	$(LIBFT_DIR)/libft.a
-FT_PRINTF		=	$(FT_PRINTF_DIR)/printf.a
+FT_PRINTF		=	$(FT_PRINTF_DIR)/libftprintf.a
 GNL				=	$(GNL_DIR)/get_next_line.a
 
 CC				=	cc
