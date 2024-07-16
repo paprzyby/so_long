@@ -6,14 +6,14 @@
 #    By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/05 11:27:08 by paprzyby          #+#    #+#              #
-#    Updated: 2024/07/16 09:46:34 by paprzyby         ###   ########.fr        #
+#    Updated: 2024/07/16 13:28:03 by paprzyby         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	so_long
 
 SOURCE			=	main.c check_the_map.c flood_fill.c \
-					read_the_map.c returns.c render_the_textures.C
+					read_the_map.c returns.c render_the_textures.c
 LIBMLX_DIR		=	./MLX42
 LIBFT_DIR		=	libft
 FT_PRINTF_DIR	=	ft_printf
