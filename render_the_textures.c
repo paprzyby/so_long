@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:27:48 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/16 14:13:13 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/16 14:41:30 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	render_the_textures(t_lst *game)
 				img = mlx_texture_to_image(game->mlx, textures->player);
 			else if (game->map[x][y] == 'C')
 				img = mlx_texture_to_image(game->mlx, textures->collectible);
-			else if (game->map[y][y] == 'E')
+			else
 				img = mlx_texture_to_image(game->mlx, textures->exit);
 			mlx_image_to_window(game->mlx, img, y * 50, x * 50);
 			y++;
