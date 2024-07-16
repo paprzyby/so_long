@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/16 09:46:19 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/16 12:58:17 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,15 @@ typedef struct	s_flood
 	int	p;
 	int e;
 }				t_flood;
+
+typedef struct	s_textures
+{
+	mlx_image_t	*collectible;
+	mlx_image_t	*empty_space;
+	mlx_image_t	*exit;
+	mlx_image_t	*player;
+	mlx_image_t	*wall;
+}				t_textures;
 
 void	read_the_map(char *map, t_lst *game);
 void	ft_return(int fd, char *line, char *lines, bool check);
