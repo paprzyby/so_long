@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/17 15:39:58 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/17 15:58:43 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ void	flood_fill(char **map, t_lst *game, int x, int y, t_flood *flood);
 void	ft_error(t_lst *game);
 void	ft_flood_error(t_flood *flood, t_lst *game);
 void	render_the_textures(t_lst *game);
-void	keys(int keycode, void *param);
+void	keys(mlx_key_data_t keydata, void *param);
+void	move_up(t_lst *game);
+void	move_down(t_lst *game);
+void	move_left(t_lst *game);
+void	move_right(t_lst *game);
 
 #endif
