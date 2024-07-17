@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/17 15:58:43 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/17 16:18:08 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct	s_lst
 	char	**map_copy;
 	int		column;
 	int		row;
+	int		position_x;
+	int		position_y;
 	mlx_t	*mlx;
 }				t_lst;
 

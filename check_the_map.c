@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 16:46:36 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/15 11:57:43 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/17 16:19:09 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,11 @@ bool	check_the_chars(t_lst *game)
 			else if (game->map[i][j] == '0')
 				j++;
 			else if (game->map[i][j] == 'P')
+			{
+				game->position_x = j;
+				game->position_y = i;
 				j++;
+			}
 			else if (game->map[i][j] == 'C')
 				j++;
 			else if (game->map[i][j] == 'E')

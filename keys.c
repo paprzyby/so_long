@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 15:32:25 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/17 15:58:54 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/17 17:17:12 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	keys(mlx_key_data_t keydata, void *param)
 	t_lst	*game;
 
 	game = param;
+	ft_printf("%d\n", game->position_x);
+	ft_printf("%d\n", game->position_y);
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
 		move_up(game);
 	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
