@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 16:46:36 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/17 16:19:09 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:07:24 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ bool	check_the_chars(t_lst *game)
 				j++;
 			}
 			else if (game->map[i][j] == 'C')
+			{
+				game->c_count++;
 				j++;
+			}
 			else if (game->map[i][j] == 'E')
 				j++;
 			else

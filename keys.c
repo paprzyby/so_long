@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 15:32:25 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/17 18:00:14 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/17 19:08:45 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,23 @@ void	move_right(t_lst *game)
 {
 	mlx_image_t	*img;
 
+	if (game->map[game->position_y][game->position_x + 1] == 'E')
+	{
+		if (game->c_count == 0)
+			exit(1);
+		return ;
+	}
 	if (game->map[game->position_y][game->position_x + 1] != '1')
 	{
 		img = render_the_textures2(game, '0');
 		mlx_image_to_window(game->mlx, img, game->position_x * 50,
 			game->position_y * 50);
 		game->position_x = game->position_x + 1;
+		if (game->map[game->position_y][game->position_x] == 'C')
+		{
+			game->map[game->position_y][game->position_x] = '0';
+			game->c_count--;
+		}
 		img = render_the_textures2(game, 'P');
 		mlx_image_to_window(game->mlx, img, game->position_x * 50, game->position_y * 50);
 	}
@@ -60,12 +71,23 @@ void	move_left(t_lst *game)
 {
 	mlx_image_t	*img;
 
+	if (game->map[game->position_y][game->position_x - 1] == 'E')
+	{
+		if (game->c_count == 0)
+			exit(1);
+		return ;
+	}
 	if (game->map[game->position_y][game->position_x - 1] != '1')
 	{
 		img = render_the_textures2(game, '0');
 		mlx_image_to_window(game->mlx, img, game->position_x * 50,
 			game->position_y * 50);
 		game->position_x = game->position_x - 1;
+		if (game->map[game->position_y][game->position_x] == 'C')
+		{
+			game->map[game->position_y][game->position_x] = '0';
+			game->c_count--;
+		}
 		img = render_the_textures2(game, 'P');
 		mlx_image_to_window(game->mlx, img, game->position_x * 50, game->position_y * 50);
 	}
@@ -75,12 +97,23 @@ void	move_down(t_lst *game)
 {
 	mlx_image_t	*img;
 
+	if (game->map[game->position_y + 1][game->position_x] == 'E')
+	{
+		if (game->c_count == 0)
+			exit(1);
+		return ;
+	}
 	if (game->map[game->position_y + 1][game->position_x] != '1')
 	{
 		img = render_the_textures2(game, '0');
 		mlx_image_to_window(game->mlx, img, game->position_x * 50,
 			game->position_y * 50);
 		game->position_y = game->position_y + 1;
+		if (game->map[game->position_y][game->position_x] == 'C')
+		{
+			game->map[game->position_y][game->position_x] = '0';
+			game->c_count--;
+		}
 		img = render_the_textures2(game, 'P');
 		mlx_image_to_window(game->mlx, img, game->position_x * 50, game->position_y * 50);
 	}
@@ -90,12 +123,23 @@ void	move_up(t_lst *game)
 {
 	mlx_image_t	*img;
 
+	if (game->map[game->position_y - 1][game->position_x] == 'E')
+	{
+		if (game->c_count == 0)
+			exit(1);
+		return ;
+	}
 	if (game->map[game->position_y - 1][game->position_x] != '1')
 	{
 		img = render_the_textures2(game, '0');
 		mlx_image_to_window(game->mlx, img, game->position_x * 50,
 			game->position_y * 50);
 		game->position_y = game->position_y - 1;
+		if (game->map[game->position_y][game->position_x] == 'C')
+		{
+			game->map[game->position_y][game->position_x] = '0';
+			game->c_count--;
+		}
 		img = render_the_textures2(game, 'P');
 		mlx_image_to_window(game->mlx, img, game->position_x * 50, game->position_y * 50);
 	}

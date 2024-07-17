@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/17 17:35:25 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:08:40 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct	s_lst
 	int		row;
 	int		position_x;
 	int		position_y;
+	int		c_count;
 	mlx_t	*mlx;
 }				t_lst;
 
