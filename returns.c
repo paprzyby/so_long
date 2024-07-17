@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 11:55:03 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/15 13:28:02 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/17 19:51:51 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,10 @@ void	ft_error(t_lst *game)
 	exit(1);
 }
 
-void	ft_flood_error(t_flood *flood, t_lst *game)
+void	ft_flood_error(t_lst *game)
 {
 	ft_printf("Error\nInvalid map\n");
 	free(game);
-	free(flood);
 	//clear the list
 	exit(1);
 }

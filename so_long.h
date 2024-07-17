@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/17 18:08:40 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/17 19:56:38 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,10 @@ typedef struct	s_lst
 	int		position_x;
 	int		position_y;
 	int		c_count;
+	int		p_count;
+	int		e_count;
 	mlx_t	*mlx;
 }				t_lst;
-
-typedef struct	s_flood
-{
-	int	c;
-	int	p;
-	int e;
-}				t_flood;
 
 typedef struct	s_textures
 {
@@ -53,14 +48,13 @@ typedef struct	s_textures
 void	read_the_map(char *map, t_lst *game);
 void	ft_return(int fd, char *line, char *lines, bool check);
 bool	count_map_size(char *line, t_lst *game);
-void	check_the_map(t_lst *game);
-bool	check_the_size(t_lst *game);
+void	map_init(char *map, t_lst *game);
 bool	check_the_chars(t_lst *game);
 bool	check_the_walls(t_lst *game);
-void	flood_init(t_lst *game);
-void	flood_fill(char **map, t_lst *game, int x, int y, t_flood *flood);
+bool	check_bottom_wall(t_lst *game);
+void	flood_fill(char **map, t_lst *game, int x, int y);
 void	ft_error(t_lst *game);
-void	ft_flood_error(t_flood *flood, t_lst *game);
+void	ft_flood_error(t_lst *game);
 void	render_the_textures(t_lst *game);
 void	keys(mlx_key_data_t keydata, void *param);
 void	move_up(t_lst *game);

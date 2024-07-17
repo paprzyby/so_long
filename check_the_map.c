@@ -6,11 +6,27 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 16:46:36 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/17 18:07:24 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/17 19:45:39 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+bool	check_bottom_wall(t_lst *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (i == 0 && game->map[i][j])
+	{
+		if (game->map[i][j] != '1')
+			return (false);
+		j++;
+	}
+	return (true);
+}
 
 bool	check_the_walls(t_lst *game)
 {
@@ -23,12 +39,8 @@ bool	check_the_walls(t_lst *game)
 	{
 		if (game->map[i][0] != '1' || game->map[i][game->column - 1] != '1')
 			return (false);
-		while (i == 0 && game->map[i][j])
-		{
-			if (game->map[i][j] != '1')
-				return (false);
-			j++;
-		}
+		if (check_bottom_wall(game) == false)
+			return (false);
 		if (i == game->row - 1)
 		{
 			j = 0;
@@ -56,58 +68,55 @@ bool	check_the_chars(t_lst *game)
 		j = 0;
 		while (game->map[i][j])
 		{
-			if (game->map[i][j] == '1')
-				j++;
-			else if (game->map[i][j] == '0')
-				j++;
-			else if (game->map[i][j] == 'P')
+			if (game->map[i][j] == 'P')
 			{
 				game->position_x = j;
 				game->position_y = i;
-				j++;
 			}
-			else if (game->map[i][j] == 'C')
-			{
-				game->c_count++;
-				j++;
-			}
-			else if (game->map[i][j] == 'E')
-				j++;
-			else
+			else if (game->map[i][j] != '1' && game->map[i][j] != '0'
+						&& game->map[i][j] != 'C' && game->map[i][j] != 'E')
 				return (false);
+			j++;
 		}
 		i++;
 	}
 	return (true);
 }
 
-bool	check_the_size(t_lst *game)
+bool	count_map_size(char *line, t_lst *game)
 {
-	int	row;
-	int	len1;
-	int	len2;
+	int	len;
 
-	row = 0;
-	len1 = 0;
-	len2 = ft_strlen(game->map[row]);
-	while (game->map[row])
-	{
-		row++;
-		if (!game->map[row])
-			return (true);
-		len1 = ft_strlen(game->map[row]);
-		if (len1 != len2)
-			return (false);
-	}
+	len = ft_strlen(line);
+	if (len == 0 || line[0] == '\n')
+		return (false);
+	game->column = len;
+	game->row++;
 	return (true);
 }
 
-void	check_the_map(t_lst *game)
+void	read_the_map(char *map, t_lst *game)
 {
-	if (check_the_size(game) == false)
-		ft_error(game);
-	if (check_the_chars(game) == false)
-		ft_error(game);
-	if (check_the_walls(game) == false)
-		ft_error(game);
+	char	*lines;
+	char	*line;
+	int		fd;
+
+	fd = open(map, O_RDONLY);
+	if (fd == -1)
+		ft_return(fd, line, lines, false);
+	line = get_next_line(fd);
+	if (!line || line[0] == '\n')
+		ft_return(fd, line, lines, false);
+	lines = ft_calloc(1 , 1);
+	while (line)
+	{
+		lines = ft_strjoin(lines, line);
+		if (count_map_size(line, game) == false)
+			ft_return(fd, line, lines, false);
+		free(line);
+		line = get_next_line(fd);
+	}
+	game->map = ft_split(lines, '\n');
+	game->map_copy = ft_split(lines, '\n');
+	ft_return(fd, line, lines, true);
 }
