@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/17 19:57:55 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/18 10:34:18 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	main(int ac, char **av)
 		game->mlx = mlx;
 		render_the_textures(game);
 		mlx_key_hook(mlx, &keys, game);
-		//clear the list
 		mlx_loop(mlx);
 		mlx_terminate(game->mlx);
 		return (0);
@@ -63,3 +62,11 @@ int	main(int ac, char **av)
 	ft_printf("Error\nInvalid number of parameters\n");
 	return (1);
 }
+
+//fix te makefile so that it will only build mlx either when types 'make re' or if the mlx library is not built
+//check the memory leak
+//case if the collectible is not accesible
+//CC				=	cc -fsanitize=address -fsanitize=undefined -fno-sanitize-recover=all -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow -fno-sanitize=null -fno-sanitize=alignment
+//memory leaks while \n
+//at least 1 collectible
+//count the moves
