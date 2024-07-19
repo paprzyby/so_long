@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/19 15:11:43 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/19 15:59:51 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	map_init(char *map, t_lst *game)
 		ft_error(game);
 	flood_fill(game->map_copy, game, 1, 1);
 	if (game->p_count != 1 || game->e_count != 1
-			|| game->c_count == 0)
+		|| game->c_count == 0)
 		ft_flood_error(game);
 }
 
