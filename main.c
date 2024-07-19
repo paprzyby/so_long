@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/19 14:00:13 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/19 14:59:50 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	map_init(char *map, t_lst *game)
 	if (check_the_walls(game) == false)
 		ft_error(game);
 	flood_fill(game->map_copy, game, 1, 1);
-	if (game->p_count != 1 || game->e_count != 1)
+	if (game->p_count != 1 || game->e_count != 1
+			|| game->c_count == 0)
 		ft_flood_error(game);
 }
 
@@ -81,8 +82,6 @@ int	main(int ac, char **av)
 	return (1);
 }
 
-//mistake: do something if the collectible is not accesible
-//mistake: if there are no collectibles, the program should return an error
 //count the moves
 //check the memory leak
 //memory leaks while there is a \n
