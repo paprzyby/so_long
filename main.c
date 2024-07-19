@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/19 15:59:51 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/19 18:29:29 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,9 @@ int	main(int ac, char **av)
 		mlx_key_hook(mlx, &keys, game);
 		mlx_loop(mlx);
 		mlx_terminate(game->mlx);
+		free(game);
 		return (0);
 	}
 	ft_printf("Error\nInvalid number of parameters\n");
 	return (1);
 }
-
-//check the memory leak
-//memory leaks while there is a \n
-//cc -fsanitize=address -fsanitize=undefined -fno-sanitize-recover=all -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow -fno-sanitize=null -fno-sanitize=alignment

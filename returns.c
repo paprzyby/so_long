@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 11:55:03 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/18 10:33:45 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/19 18:28:41 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 void	ft_return(int fd, char *line, char *lines, bool check)
 {
-	if (fd == -1)
-	{
-		ft_printf("Error\nFailed, while opening the file\n");
-		exit(1);
-	}
 	if (check == true)
 	{
 		free(line);
@@ -27,7 +22,7 @@ void	ft_return(int fd, char *line, char *lines, bool check)
 		return ;
 	}
 	if (lines)
-		free(line);
+		free(lines);
 	free(line);
 	close(fd);
 	ft_printf("Error\nInvalid map\n");
