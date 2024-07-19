@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 15:32:25 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/18 10:32:36 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/19 13:47:58 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	move_right(t_lst *game)
 {
 	mlx_image_t	*img;
 
+	img = NULL;
 	if (game->map[game->position_y][game->position_x + 1] == 'E')
 	{
 		if (game->c_count == 0)
@@ -43,6 +44,7 @@ void	move_left(t_lst *game)
 {
 	mlx_image_t	*img;
 
+	img = NULL;
 	if (game->map[game->position_y][game->position_x - 1] == 'E')
 	{
 		if (game->c_count == 0)
@@ -70,6 +72,7 @@ void	move_down(t_lst *game)
 {
 	mlx_image_t	*img;
 
+	img = NULL;
 	if (game->map[game->position_y + 1][game->position_x] == 'E')
 	{
 		if (game->c_count == 0)
@@ -97,6 +100,7 @@ void	move_up(t_lst *game)
 {
 	mlx_image_t	*img;
 
+	img = NULL;
 	if (game->map[game->position_y - 1][game->position_x] == 'E')
 	{
 		if (game->c_count == 0)

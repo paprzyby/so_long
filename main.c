@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/19 13:38:27 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/19 14:00:13 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,23 @@ void	map_init(char *map, t_lst *game)
 		ft_flood_error(game);
 }
 
+void	init_t_lst(t_lst *game)
+{
+	game->column = 0;
+	game->row = 0;
+	game->position_x = 0;
+	game->position_y = 0;
+	game->c_count = 0;
+	game->p_count = 0;
+	game->e_count = 0;
+	game->collectible = NULL;
+	game->empty_space = NULL;
+	game->exit = NULL;
+	game->player = NULL;
+	game->wall = NULL;
+	game->mlx = NULL;
+}
+
 int	main(int ac, char **av)
 {
 	t_lst	*game;
@@ -49,6 +66,7 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		game = ft_calloc(1, sizeof(t_lst));
+		init_t_lst(game);
 		map_init(av[1], game);
 		mlx_set_setting(MLX_STRETCH_IMAGE, true);
 		mlx = mlx_init(game->column * 50, game->row * 50, "so_long", true);
@@ -63,17 +81,9 @@ int	main(int ac, char **av)
 	return (1);
 }
 
-//while using variable from a struct, you should initilaze it to 0 before doing anything
 //mistake: do something if the collectible is not accesible
 //mistake: if there are no collectibles, the program should return an error
 //count the moves
-
-//CC	=	cc -fsanitize=address -fsanitize=undefined -fno-sanitize-recover=all -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow -fno-sanitize=null -fno-sanitize=alignment
 //check the memory leak
 //memory leaks while there is a \n
-
-//makefile
-//struct
-//no collectible
-//count moves
-//memory leaks
+//CC	=	cc -fsanitize=address -fsanitize=undefined -fno-sanitize-recover=all -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow -fno-sanitize=null -fno-sanitize=alignment
