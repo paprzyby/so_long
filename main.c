@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/18 10:34:18 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/19 13:38:27 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,17 @@ int	main(int ac, char **av)
 	return (1);
 }
 
-//fix te makefile so that it will only build mlx either when types 'make re' or if the mlx library is not built
-//check the memory leak
-//case if the collectible is not accesible
-//CC				=	cc -fsanitize=address -fsanitize=undefined -fno-sanitize-recover=all -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow -fno-sanitize=null -fno-sanitize=alignment
-//memory leaks while \n
-//at least 1 collectible
+//while using variable from a struct, you should initilaze it to 0 before doing anything
+//mistake: do something if the collectible is not accesible
+//mistake: if there are no collectibles, the program should return an error
 //count the moves
+
+//CC	=	cc -fsanitize=address -fsanitize=undefined -fno-sanitize-recover=all -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow -fno-sanitize=null -fno-sanitize=alignment
+//check the memory leak
+//memory leaks while there is a \n
+
+//makefile
+//struct
+//no collectible
+//count moves
+//memory leaks

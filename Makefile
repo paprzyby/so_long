@@ -6,7 +6,7 @@
 #    By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/05 11:27:08 by paprzyby          #+#    #+#              #
-#    Updated: 2024/07/18 09:23:55 by paprzyby         ###   ########.fr        #
+#    Updated: 2024/07/19 13:38:50 by paprzyby         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,12 +35,13 @@ MLX_FLAGS 		:= -L./MLX42/build -lmlx42 -I../MLX42/include -lglfw -framework Coco
 HEADERS 		:= -I ./include -I $(LIBMLX_DIR)/include -I $(LIBFT_DIR) -I $(FT_PRINTF_DIR) -I $(GNL_DIR)
 
 all:			$(NAME)
-	@echo ""
-	@echo "$(NAME) built successfully!"
-	@echo ""
 
-mlx:
-	@cmake $(LIBMLX_DIR) -B $(LIBMLX_DIR)/build && make -C $(LIBMLX_DIR)/build -j4
+mlx:			$(LIBMLX_DIR)/build/stamp
+
+$(LIBMLX_DIR)/build/stamp:
+	@cmake $(LIBMLX_DIR) -B $(LIBMLX_DIR)/build
+	@make -C $(LIBMLX_DIR)/build -j4
+	@touch $@
 
 $(NAME):	mlx $(OBJECTS) $(LIBFT) $(FT_PRINTF) $(GNL)
 			@$(CC) $(FLAGS) $(OBJECTS) $(MLX_FLAGS) -o $@ $(LIBFT) $(FT_PRINTF) $(GNL)
@@ -63,6 +64,7 @@ clean:
 
 fclean:	clean
 	@$(RM) $(NAME)
+	@$(RM) $(LIBMLX_DIR)/build/stamp
 	@make -C $(LIBFT_DIR) fclean
 	@make -C $(FT_PRINTF_DIR) fclean
 	@make -C $(GNL_DIR) fclean
