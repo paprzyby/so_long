@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/19 18:28:40 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/19 18:56:08 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ bool		check_the_walls(t_lst *game);
 bool		check_bottom_wall(t_lst *game);
 void		flood_fill(char **map, t_lst *game, int x, int y);
 void		ft_error(t_lst *game);
-void		ft_flood_error(t_lst *game);
 void		render_the_textures(t_lst *game);
 mlx_image_t	*render_the_textures2(t_lst *game, mlx_image_t	*img, char c);
 void		keys(mlx_key_data_t keydata, void *param);
@@ -63,5 +62,6 @@ void		load_the_textures(t_lst *game);
 void		delete_the_textures(t_lst *game);
 mlx_image_t	*texture_to_image(t_lst *game, mlx_image_t	*img, int x, int y);
 void		init_t_lst(t_lst *game);
+void		mlx_error(t_lst *game);
 
 #endif

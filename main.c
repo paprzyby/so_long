@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/19 18:29:29 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/19 18:55:39 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	map_init(char *map, t_lst *game)
 	flood_fill(game->map_copy, game, 1, 1);
 	if (game->p_count != 1 || game->e_count != 1
 		|| game->c_count == 0)
-		ft_flood_error(game);
+		ft_error(game);
 }
 
 void	init_t_lst(t_lst *game)
@@ -72,6 +72,8 @@ int	main(int ac, char **av)
 		map_init(av[1], game);
 		mlx_set_setting(MLX_STRETCH_IMAGE, true);
 		mlx = mlx_init(game->column * 50, game->row * 50, "so_long", true);
+		if (!mlx)
+			mlx_error(game);
 		game->mlx = mlx;
 		render_the_textures(game);
 		mlx_key_hook(mlx, &keys, game);

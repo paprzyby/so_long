@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 11:55:03 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/19 18:28:41 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/19 18:55:27 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	ft_error(t_lst *game)
 	exit(1);
 }
 
-void	ft_flood_error(t_lst *game)
+void	mlx_error(t_lst *game)
 {
-	ft_printf("Error\nInvalid map\n");
+	ft_printf("Error\nwhile initialing the MiniLibX library\n");
 	free(game);
 	exit(1);
 }
