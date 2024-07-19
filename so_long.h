@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/19 13:58:27 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/19 15:02:54 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_lst
 	int				c_count;
 	int				p_count;
 	int				e_count;
+	int				moves_count;
 	mlx_texture_t	*collectible;
 	mlx_texture_t	*empty_space;
 	mlx_texture_t	*exit;

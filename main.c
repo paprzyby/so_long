@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/19 14:59:50 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/19 15:10:55 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	init_t_lst(t_lst *game)
 	game->c_count = 0;
 	game->p_count = 0;
 	game->e_count = 0;
+	game->moves_count = 0;
 	game->collectible = NULL;
 	game->empty_space = NULL;
 	game->exit = NULL;
@@ -82,7 +83,6 @@ int	main(int ac, char **av)
 	return (1);
 }
 
-//count the moves
 //check the memory leak
 //memory leaks while there is a \n
 //CC	=	cc -fsanitize=address -fsanitize=undefined -fno-sanitize-recover=all -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow -fno-sanitize=null -fno-sanitize=alignment

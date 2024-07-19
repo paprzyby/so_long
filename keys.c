@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 15:32:25 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/19 13:47:58 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/19 15:09:54 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	move_right(t_lst *game)
 		img = render_the_textures2(game, img, 'P');
 		mlx_image_to_window(game->mlx, img,
 			game->position_x * 50, game->position_y * 50);
+		game->moves_count++;
+		ft_printf("Current number of moves: %d\n", game->moves_count);
 	}
 }
 
@@ -65,6 +67,8 @@ void	move_left(t_lst *game)
 		img = render_the_textures2(game, img, 'P');
 		mlx_image_to_window(game->mlx, img,
 			game->position_x * 50, game->position_y * 50);
+		game->moves_count++;
+		ft_printf("Current number of moves: %d\n", game->moves_count);
 	}
 }
 
@@ -93,6 +97,8 @@ void	move_down(t_lst *game)
 		img = render_the_textures2(game, img, 'P');
 		mlx_image_to_window(game->mlx, img,
 			game->position_x * 50, game->position_y * 50);
+		game->moves_count++;
+		ft_printf("Current number of moves: %d\n", game->moves_count);
 	}
 }
 
@@ -105,9 +111,8 @@ void	move_up(t_lst *game)
 	{
 		if (game->c_count == 0)
 			exit(1);
-		return ;
 	}
-	if (game->map[game->position_y - 1][game->position_x] != '1')
+	else if (game->map[game->position_y - 1][game->position_x] != '1')
 	{
 		img = render_the_textures2(game, img, '0');
 		mlx_image_to_window(game->mlx, img, game->position_x * 50,
@@ -121,6 +126,8 @@ void	move_up(t_lst *game)
 		img = render_the_textures2(game, img, 'P');
 		mlx_image_to_window(game->mlx, img,
 			game->position_x * 50, game->position_y * 50);
+		game->moves_count++;
+		ft_printf("Current number of moves: %d\n", game->moves_count);
 	}
 }
 
