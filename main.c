@@ -6,11 +6,15 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/23 19:02:54 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/23 19:15:03 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+//void check_leaks(void) {
+//    system("leaks so_long");
+//}
 
 void	flood_fill(char **map, t_lst *game, int x, int y)
 {
@@ -74,6 +78,7 @@ void	check_the_extension(char *str)
 
 int	main(int ac, char **av)
 {
+	//atexit(check_leaks);
 	t_lst	*game;
 	mlx_t	*mlx;
 

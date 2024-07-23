@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 16:46:36 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/23 19:01:37 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/23 19:09:34 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,5 @@ void	read_the_map(char *map, t_lst *game)
 	}
 	game->map = ft_split(lines, '\n');
 	game->map_copy = ft_split(lines, '\n');
-	ft_return(game, fd, line, lines, false);
+	ft_return(game, fd, line, lines, true);
 }

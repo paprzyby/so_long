@@ -6,9 +6,14 @@
 #    By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/05 11:27:08 by paprzyby          #+#    #+#              #
-#    Updated: 2024/07/23 19:03:52 by paprzyby         ###   ########.fr        #
+#    Updated: 2024/07/23 19:40:53 by paprzyby         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+.SILENT:
+
+COLOUR_GREEN	=	\033[0;32m
+COLOUR_END		=	\033[0m
 
 NAME			=	so_long
 
@@ -39,12 +44,13 @@ all:			$(NAME)
 mlx:			$(LIBMLX_DIR)/build/stamp
 
 $(LIBMLX_DIR)/build/stamp:
-	@cmake $(LIBMLX_DIR) -B $(LIBMLX_DIR)/build
+	@cmake $(LIBMLX_DIR) -B $(LIBMLgX_DIR)/build
 	@make -C $(LIBMLX_DIR)/build -j4
 	@touch $@
 
 $(NAME):	mlx $(OBJECTS) $(LIBFT) $(FT_PRINTF) $(GNL)
-			@$(CC) $(FLAGS) $(OBJECTS) $(MLX_FLAGS) -o $@ $(LIBFT) $(FT_PRINTF) $(GNL)
+	$(CC) $(FLAGS) $(OBJECTS) $(MLX_FLAGS) -o $@ $(LIBFT) $(FT_PRINTF) $(GNL)
+	@echo "$(COLOUR_GREEN)$(NAME) built successfully!$(COLOUR_END)"
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
@@ -61,6 +67,7 @@ clean:
 	@make -C $(LIBFT_DIR) clean
 	@make -C $(FT_PRINTF_DIR) clean
 	@make -C $(GNL_DIR) clean
+	@echo "$(COLOUR_GREEN)objects removed successfully..$(COLOUR_END)"
 
 fclean:	clean
 	@$(RM) $(NAME)
@@ -68,13 +75,8 @@ fclean:	clean
 	@make -C $(LIBFT_DIR) fclean
 	@make -C $(FT_PRINTF_DIR) fclean
 	@make -C $(GNL_DIR) fclean
-	@echo ""
-	@echo "All files cleaned successfully!"
-	@echo ""
+	@echo "$(COLOUR_GREEN)$(NAME) cleaned successfully..$(COLOUR_END)"
 
 re:				fclean all
 
 .PHONY:			all clean fclean re mlx
-
-
-#MLX_URL = https://github.com/codam-coding-college/MLX42.git
