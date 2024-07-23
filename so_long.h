@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/19 18:56:08 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/23 19:04:59 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_lst
 }				t_lst;
 
 void		read_the_map(char *map, t_lst *game);
-void		ft_return(int fd, char *line, char *lines, bool check);
+void		ft_return(t_lst *game, int fd, char *line, char *lines, bool check);
 bool		count_map_size(char *line, t_lst *game);
 void		map_init(char *map, t_lst *game);
 bool		check_the_chars(t_lst *game);
@@ -61,7 +61,9 @@ void		move_right(t_lst *game);
 void		load_the_textures(t_lst *game);
 void		delete_the_textures(t_lst *game);
 mlx_image_t	*texture_to_image(t_lst *game, mlx_image_t	*img, int x, int y);
-void		init_t_lst(t_lst *game);
+//void		init_t_lst(t_lst *game);
 void		mlx_error(t_lst *game);
+void		check_the_extension(char *str);
+void		free_everything(t_lst *game);
 
 #endif

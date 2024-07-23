@@ -6,7 +6,7 @@
 #    By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/05 11:27:08 by paprzyby          #+#    #+#              #
-#    Updated: 2024/07/19 18:25:10 by paprzyby         ###   ########.fr        #
+#    Updated: 2024/07/23 19:03:52 by paprzyby         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,3 +75,6 @@ fclean:	clean
 re:				fclean all
 
 .PHONY:			all clean fclean re mlx
+
+
+#MLX_URL = https://github.com/codam-coding-college/MLX42.git

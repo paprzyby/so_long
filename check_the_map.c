@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 16:46:36 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/19 18:28:36 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/23 19:01:37 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,16 +107,16 @@ void	read_the_map(char *map, t_lst *game)
 	line = get_next_line(fd);
 	lines = ft_calloc(1, 1);
 	if (!line || line[0] == '\n')
-		ft_return(fd, line, lines, false);
+		ft_return(game, fd, line, lines, false);
 	while (line)
 	{
 		lines = ft_strjoin(lines, line);
 		if (count_map_size(line, game) == false)
-			ft_return(fd, line, lines, false);
+			ft_return(game, fd, line, lines, false);
 		free(line);
 		line = get_next_line(fd);
 	}
 	game->map = ft_split(lines, '\n');
 	game->map_copy = ft_split(lines, '\n');
-	ft_return(fd, line, lines, true);
+	ft_return(game, fd, line, lines, false);
 }

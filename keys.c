@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 15:32:25 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/19 16:02:06 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/23 19:02:04 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,10 @@ void	keys(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
 		move_right(game);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		exit(1);
+	{
+		delete_the_textures(game);
+		free_everything(game);
+		exit(0);
+	}
 	delete_the_textures(game);
 }
