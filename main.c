@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/24 13:01:25 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:39:46 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,28 @@ void	map_init(char *map, t_lst *game)
 {
 	read_the_map(map, game);
 	if (check_the_chars(game) == false)
-		ft_error(game);
+	{
+		free_the_maps(game);
+		free(game);
+		ft_printf("Error\nInvalid map\n");
+		exit(1);
+	}
 	if (check_the_walls(game) == false)
-		ft_error(game);
+	{
+		free_the_maps(game);
+		free(game);
+		ft_printf("Error\nInvalid map\n");
+		exit(1);
+	}
 	flood_fill(game->map_copy, game, 1, 1);
 	if (game->p_count != 1 || game->e_count != 1
 		|| game->c_count == 0)
-		ft_error(game);
+	{
+		free_the_maps(game);
+		free(game);
+		ft_printf("Error\nInvalid map\n");
+		exit(1);
+	}
 }
 
 void	init_t_lst(t_lst *game)
@@ -86,7 +101,8 @@ int	main(int ac, char **av)
 		mlx_key_hook(mlx, &keys, game);
 		mlx_loop(mlx);
 		mlx_terminate(game->mlx);
-		free_everything(game);
+		free_the_maps(game);
+		free(game);
 		return (0);
 	}
 	ft_printf("Error\nInvalid number of parameters\n");

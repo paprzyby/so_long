@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/24 12:37:08 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:40:26 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ typedef struct s_lst
 }				t_lst;
 
 void		read_the_map(char *map, t_lst *game);
-void		ft_return(t_lst *game, int fd, char *line, char *lines, bool check);
+void		ft_return(t_lst *game, int fd, char *line, char *lines);
 bool		count_map_size(char *line, t_lst *game);
 void		map_init(char *map, t_lst *game);
 bool		check_the_chars(t_lst *game);
 bool		check_the_walls(t_lst *game);
 bool		check_bottom_wall(t_lst *game);
 void		flood_fill(char **map, t_lst *game, int x, int y);
-void		ft_error(t_lst *game);
+void		ft_error(t_lst *game, int fd, char *line, char *lines);
 void		render_the_textures(t_lst *game);
 mlx_image_t	*render_the_textures2(t_lst *game, mlx_image_t	*img, char c);
 void		keys(mlx_key_data_t keydata, void *param);
@@ -64,6 +64,7 @@ mlx_image_t	*texture_to_image(t_lst *game, mlx_image_t	*img, int x, int y);
 void		init_t_lst(t_lst *game);
 void		mlx_error(t_lst *game);
 void		check_the_extension(char *str);
-void		free_everything(t_lst *game);
+void		free_the_maps(t_lst *game);
+void		fd_error(t_lst *game);
 
 #endif

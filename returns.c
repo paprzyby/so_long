@@ -6,45 +6,55 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 11:55:03 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/24 12:59:21 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:37:47 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_return(t_lst *game, int fd, char *line, char *lines, bool check)
+void	ft_return(t_lst *game, int fd, char *line, char *lines)
 {
-	if (check == true)
+	if (!game->map[1])
 	{
-		free(lines);
-		close(fd);
-		return ;
+		if (lines)
+			free(lines);
+		if (line)
+			free(line);
+		free_the_maps(game);
+		free(game);
+		ft_printf("Error\nInvalid map\n");
+		exit(1);
 	}
 	if (lines)
 		free(lines);
 	if (line)
 		free(line);
-	free_everything(game);
 	close(fd);
-	ft_printf("Error\nInvalid map\n");
-	exit(1);
 }
 
-void	ft_error(t_lst *game)
+void	ft_error(t_lst *game, int fd, char *line, char *lines)
 {
-	free_everything(game);
+	if (lines)
+		free(lines);
+	if (line)
+		free(line);
+	close(fd);
+	if (game->map)
+		free_the_maps(game);
+	free(game);
 	ft_printf("Error\nInvalid map\n");
 	exit(1);
 }
 
 void	mlx_error(t_lst *game)
 {
-	free_everything(game);
+	free_the_maps(game);
+	free(game);
 	ft_printf("Error\nwhile initialing the MiniLibX library\n");
 	exit(1);
 }
 
-void	free_everything(t_lst *game)
+void	free_the_maps(t_lst *game)
 {
 	int	i;
 
@@ -62,5 +72,11 @@ void	free_everything(t_lst *game)
 		i++;
 	}
 	free(game->map_copy);
+}
+
+void	fd_error(t_lst *game)
+{
 	free(game);
+	ft_printf("Error\nwith the file descriptor\n");
+	exit(1);
 }
