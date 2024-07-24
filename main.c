@@ -6,15 +6,11 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/23 19:15:03 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/24 13:01:25 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-//void check_leaks(void) {
-//    system("leaks so_long");
-//}
 
 void	flood_fill(char **map, t_lst *game, int x, int y)
 {
@@ -46,23 +42,17 @@ void	map_init(char *map, t_lst *game)
 		ft_error(game);
 }
 
-//void	init_t_lst(t_lst *game)
-//{
-//	game->column = 0;
-//	game->row = 0;
-//	game->position_x = 0;
-//	game->position_y = 0;
-//	game->c_count = 0;
-//	game->p_count = 0;
-//	game->e_count = 0;
-//	game->moves_count = 0;
-//	game->collectible = NULL;
-//	game->empty_space = NULL;
-//	game->exit = NULL;
-//	game->player = NULL;
-//	game->wall = NULL;
-//	game->mlx = NULL;
-//}
+void	init_t_lst(t_lst *game)
+{
+	game->column = 0;
+	game->row = 0;
+	game->position_x = 0;
+	game->position_y = 0;
+	game->c_count = 0;
+	game->p_count = 0;
+	game->e_count = 0;
+	game->moves_count = 0;
+}
 
 void	check_the_extension(char *str)
 {
@@ -78,7 +68,6 @@ void	check_the_extension(char *str)
 
 int	main(int ac, char **av)
 {
-	//atexit(check_leaks);
 	t_lst	*game;
 	mlx_t	*mlx;
 
@@ -86,7 +75,7 @@ int	main(int ac, char **av)
 	{
 		check_the_extension(av[1]);
 		game = ft_calloc(1, sizeof(t_lst));
-		//init_t_lst(game);
+		init_t_lst(game);
 		map_init(av[1], game);
 		mlx_set_setting(MLX_STRETCH_IMAGE, true);
 		mlx = mlx_init(game->column * 50, game->row * 50, "so_long", true);
@@ -97,7 +86,6 @@ int	main(int ac, char **av)
 		mlx_key_hook(mlx, &keys, game);
 		mlx_loop(mlx);
 		mlx_terminate(game->mlx);
-		free(game);
 		free_everything(game);
 		return (0);
 	}

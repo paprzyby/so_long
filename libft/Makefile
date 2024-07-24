@@ -6,7 +6,7 @@
 #    By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/10 12:57:13 by paprzyby          #+#    #+#              #
-#    Updated: 2024/03/28 07:58:21 by paprzyby         ###   ########.fr        #
+#    Updated: 2024/07/23 19:52:16 by paprzyby         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,11 @@ SOURCE			=	ft_isalnum.c ft_isprint.c ft_memcmp.c ft_split.c \
 					ft_toupper.c ft_calloc.c ft_isdigit.c ft_memchr.c ft_memset.c \
 					ft_strjoin.c ft_strtrim.c \
 					ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-					ft_putstr_fd.c ft_strmapi.c ft_striteri.c
+					ft_putstr_fd.c ft_strmapi.c ft_striteri.c ft_lstclear_bonus.c
 
 BONUS			=	ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 					ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
-					ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
+					ft_lstiter_bonus.c ft_lstmap_bonus.c
 
 BONUS_OBJS		= $(BONUS:.c=.o)
 

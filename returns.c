@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 11:55:03 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/23 19:08:54 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/24 12:59:21 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	ft_return(t_lst *game, int fd, char *line, char *lines, bool check)
 {
 	if (check == true)
 	{
-		free(line);
 		free(lines);
 		close(fd);
 		return ;
 	}
 	if (lines)
 		free(lines);
-	free(line);
+	if (line)
+		free(line);
 	free_everything(game);
 	close(fd);
 	ft_printf("Error\nInvalid map\n");

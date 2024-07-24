@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:15:00 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/23 19:04:59 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/24 12:37:08 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		move_right(t_lst *game);
 void		load_the_textures(t_lst *game);
 void		delete_the_textures(t_lst *game);
 mlx_image_t	*texture_to_image(t_lst *game, mlx_image_t	*img, int x, int y);
-//void		init_t_lst(t_lst *game);
+void		init_t_lst(t_lst *game);
 void		mlx_error(t_lst *game);
 void		check_the_extension(char *str);
 void		free_everything(t_lst *game);
