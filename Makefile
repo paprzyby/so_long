@@ -6,14 +6,9 @@
 #    By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/05 11:27:08 by paprzyby          #+#    #+#              #
-#    Updated: 2024/07/24 13:25:55 by paprzyby         ###   ########.fr        #
+#    Updated: 2024/07/24 15:13:51 by paprzyby         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-.SILENT:
-
-COLOUR_GREEN	=	\033[0;32m
-COLOUR_END		=	\033[0m
 
 NAME			=	so_long
 
@@ -36,9 +31,9 @@ RM				=	rm -f
 RMDIR			=	rm -rf
 
 FLAGS			=	-Wall -Wextra -Werror
-MLX_FLAGS 		:= -L./MLX42/build -lmlx42 -I./MLX42/include -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+MLX_FLAGS		:=	-L./MLX42/build -lmlx42 -I./MLX42/include -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 
-HEADERS 		:= -I ./include -I $(LIBMLX_DIR)/include -I $(LIBFT_DIR) -I $(FT_PRINTF_DIR) -I $(GNL_DIR)
+HEADERS			:=	-I ./include -I $(LIBMLX_DIR)/include -I $(LIBFT_DIR) -I $(FT_PRINTF_DIR) -I $(GNL_DIR)
 
 MLX_REPO		=	https://github.com/codam-coding-college/MLX42.git
 
@@ -53,19 +48,22 @@ $(LIBMLX_DIR)/build/stamp: $(LIBMLX_DIR)
 	@touch $@
 
 $(LIBMLX_DIR):
-	@git clone $(MLX_REPO) $(LIBMLX_DIR)
+	@if [ ! -d $(LIBMLX_DIR) ]; then \
+		git clone $(MLX_REPO) $(LIBMLX_DIR); \
+	fi
 
 $(NAME):	mlx $(OBJECTS) $(LIBFT) $(FT_PRINTF) $(GNL)
-	$(CC) $(FLAGS) $(OBJECTS) $(MLX_FLAGS) -o $@ $(LIBFT) $(FT_PRINTF) $(GNL)
-	@echo "$(COLOUR_GREEN)$(NAME) built successfully!$(COLOUR_END)"
+	@if [ ! -d $(NAME) ]; then \
+		$(CC) $(FLAGS) $(OBJECTS) $(MLX_FLAGS) -o $@ $(LIBFT) $(FT_PRINTF) $(GNL); \
+	fi
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
-$(FT_PRINTF): $(LIBFT)
+$(FT_PRINTF):	$(LIBFT)
 	@make -C $(FT_PRINTF_DIR)
 
-$(GNL): $(LIBFT)
+$(GNL):		$(LIBFT)
 	@make -C $(GNL_DIR)
 
 clean:
@@ -74,17 +72,15 @@ clean:
 	@make -C $(LIBFT_DIR) clean
 	@make -C $(FT_PRINTF_DIR) clean
 	@make -C $(GNL_DIR) clean
-	@echo "$(COLOUR_GREEN)objects removed successfully..$(COLOUR_END)"
 
-fclean:	clean
+fclean: clean
 	@$(RM) $(NAME)
 	@$(RMDIR) $(LIBMLX_DIR)
 	@$(RM) $(NAME)
 	@make -C $(LIBFT_DIR) fclean
 	@make -C $(FT_PRINTF_DIR) fclean
 	@make -C $(GNL_DIR) fclean
-	@echo "$(COLOUR_GREEN)$(NAME) and $(LIBMLX_DIR) cleaned successfully..$(COLOUR_END)"
 
-re:				fclean all
+re:			fclean all
 
-.PHONY:			all clean fclean re mlx $(LIBMLX_DIR)
+.PHONY:		all clean fclean re mlx
