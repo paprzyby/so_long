@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 16:46:36 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/24 14:27:31 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/28 13:17:12 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,45 +81,4 @@ bool	check_the_chars(t_lst *game)
 		i++;
 	}
 	return (true);
-}
-
-bool	count_map_size(char *line, t_lst *game)
-{
-	int	len;
-
-	len = ft_strlen(line);
-	if (len == 0 || line[0] == '\n')
-		return (false);
-	game->column = len;
-	game->row++;
-	return (true);
-}
-
-void	read_the_map(char *map, t_lst *game)
-{
-	char	*lines;
-	char	*line;
-	int		fd;
-	char	*tmp;
-
-	fd = open(map, O_RDONLY);
-	if (fd == -1)
-		fd_error(game);
-	line = get_next_line(fd);
-	lines = ft_calloc(1, 1);
-	if (!line || line[0] == '\n')
-		ft_error(game, fd, line, lines);
-	while (line)
-	{
-		tmp = lines;
-		lines = ft_strjoin(lines, line);
-		free(tmp);
-		if (count_map_size(line, game) == false)
-			ft_error(game, fd, line, lines);
-		free(line);
-		line = get_next_line(fd);
-	}
-	game->map = ft_split(lines, '\n');
-	game->map_copy = ft_split(lines, '\n');
-	ft_return(game, fd, line, lines);
 }

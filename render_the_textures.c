@@ -12,21 +12,6 @@
 
 #include "so_long.h"
 
-mlx_image_t	*render_the_textures2(t_lst *game, mlx_image_t	*img, char c)
-{
-	if (c == '1')
-		img = mlx_texture_to_image(game->mlx, game->wall);
-	else if (c == '0')
-		img = mlx_texture_to_image(game->mlx, game->empty_space);
-	else if (c == 'P')
-		img = mlx_texture_to_image(game->mlx, game->player);
-	else if (c == 'C')
-		img = mlx_texture_to_image(game->mlx, game->collectible);
-	else
-		img = mlx_texture_to_image(game->mlx, game->exit);
-	return (img);
-}
-
 void	delete_the_textures(t_lst *game)
 {
 	mlx_delete_texture(game->wall);
@@ -60,7 +45,7 @@ void	load_the_textures(t_lst *game)
 	game->wall = mlx_load_png("./images/wall.png");
 }
 
-void	render_the_textures(t_lst *game)
+void	render_the_map(t_lst *game)
 {
 	int			x;
 	int			y;

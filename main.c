@@ -6,55 +6,38 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:26:17 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/07/24 14:39:46 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/07/28 13:26:20 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	flood_fill(char **map, t_lst *game, int x, int y)
+void	keys(mlx_key_data_t keydata, void *param)
 {
-	if (x < 0 || y < 0 || map[y][x] == '1')
-		return ;
-	if (map[y][x] == 'C')
-		game->c_count++;
-	if (map[y][x] == 'P')
-		game->p_count++;
-	if (map[y][x] == 'E')
-		game->e_count++;
-	map[y][x] = '1';
-	flood_fill(map, game, x, y - 1);
-	flood_fill(map, game, x, y + 1);
-	flood_fill(map, game, x - 1, y);
-	flood_fill(map, game, x + 1, y);
-}
+	t_lst	*game;
 
-void	map_init(char *map, t_lst *game)
-{
-	read_the_map(map, game);
-	if (check_the_chars(game) == false)
+	game = param;
+	load_the_textures(game);
+	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS
+		&& game->map[game->position_y - 1][game->position_x] != '1')
+		move_up(game);
+	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS
+		&& game->map[game->position_y + 1][game->position_x] != '1')
+		move_down(game);
+	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS
+		&& game->map[game->position_y][game->position_x - 1] != '1')
+		move_left(game);
+	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS
+		&& game->map[game->position_y][game->position_x + 1] != '1')
+		move_right(game);
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
+		delete_the_textures(game);
 		free_the_maps(game);
 		free(game);
-		ft_printf("Error\nInvalid map\n");
-		exit(1);
+		exit(0);
 	}
-	if (check_the_walls(game) == false)
-	{
-		free_the_maps(game);
-		free(game);
-		ft_printf("Error\nInvalid map\n");
-		exit(1);
-	}
-	flood_fill(game->map_copy, game, 1, 1);
-	if (game->p_count != 1 || game->e_count != 1
-		|| game->c_count == 0)
-	{
-		free_the_maps(game);
-		free(game);
-		ft_printf("Error\nInvalid map\n");
-		exit(1);
-	}
+	delete_the_textures(game);
 }
 
 void	init_t_lst(t_lst *game)
@@ -97,7 +80,7 @@ int	main(int ac, char **av)
 		if (!mlx)
 			mlx_error(game);
 		game->mlx = mlx;
-		render_the_textures(game);
+		render_the_map(game);
 		mlx_key_hook(mlx, &keys, game);
 		mlx_loop(mlx);
 		mlx_terminate(game->mlx);

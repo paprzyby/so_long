@@ -6,14 +6,14 @@
 #    By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/05 11:27:08 by paprzyby          #+#    #+#              #
-#    Updated: 2024/07/24 15:13:51 by paprzyby         ###   ########.fr        #
+#    Updated: 2024/07/28 13:22:10 by paprzyby         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	so_long
 
-SOURCE			=	main.c check_the_map.c \
-					returns.c render_the_textures.c keys.c
+SOURCE			=	main.c check_the_map.c print_the_moves.c \
+					returns.c render_the_textures.c keys.c map_init.c
 
 LIBMLX_DIR		=	./MLX42
 LIBFT_DIR		=	libft
